@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.97.4
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_tflint
+        exclude: ^includes/
+        args:
+        - --args=--ignore-module=includes --disable-rule=terraform_unused_declarations --disable-rule=terraform_typed_variables
+#      - id: terraform_validate
+#        exclude: ^(includes|modules)/
+#        args:
+#        - --args=-json
+#        - --args=-no-color
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-added-large-files
+#  - repo: https://gitlab.com/devopshq/gitlab-ci-linter
+#    rev: v1.0.2
+#    hooks:
+#    -   id: gitlab-ci-linter
+
